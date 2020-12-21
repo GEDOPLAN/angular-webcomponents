@@ -1,0 +1,27 @@
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Demo</title>
+</head>
+<body>
+<script>
+  const title = document.createElement("h1")
+  title.append(document.createTextNode("Hello World."))
+  title.addEventListener("click", () => console.log(document.querySelectorAll("h1")))
+  document.body.append(title)
+
+  const footer = document.createElement("footer");
+  const footerShadow = footer.attachShadow({mode: "open"});
+  const footerStyle = document.createElement("style");
+  footerStyle.innerHTML = "h1{ color: red }";
+  const footerTitle = document.createElement("h1");
+  footerTitle.append(document.createTextNode("by GEDOPLAN"));
+  footerShadow.append(footerTitle);
+  footerShadow.append(footerStyle);
+
+  document.body.append(footer);
+
+  console.log(document.querySelector('footer').shadowRoot.querySelectorAll('h1'));
+</script>
+</body>
+</html>

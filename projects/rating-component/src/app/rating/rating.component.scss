@@ -1,0 +1,27 @@
+$marker-size: 10px;
+
+:host {
+  display: block;
+
+  div.root {
+    position: relative;
+
+    div.bar {
+      height: 2em;
+      border: 1px solid rgba(177, 173, 173, 0.72);
+      box-shadow: 0 0 5 -2 rgba(0, 0, 0, 0.72);
+      background-image: linear-gradient(to right, red, orange, yellow, green);
+      margin-left: $marker-size;
+    }
+
+    div.marker {
+      width: 0;
+      height: 0;
+      border-left: $marker-size solid transparent;
+      border-right: $marker-size solid transparent;
+      border-bottom: $marker-size * 2 solid black;
+      margin-top: $marker-size * -1;
+      position: absolute;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Demo Native Webcomponent</title>
+</head>
+<body>
+<ged-login>
+  <p slot="footer">by GEDOPLAN</p>
+</ged-login>
+
+<script>
+  class GedoplanLoginComponent extends HTMLElement {
+    templateContent = `
+      <label for="username">username</label>
+      <input id="username">
+      <label for="password">password</label>
+      <input id="password" type="password">
+      <button type="submit">login</button>
+      <slot name="footer"></slot>
+    `
+
+    connectedCallback() {
+      this.attachShadow({mode: "open"})
+
+      const template = document.createElement("template");
+      template.innerHTML = this.templateContent;
+      this.shadowRoot.append(template.content.cloneNode(true))
+    }
+  }
+
+  customElements.define("ged-login", GedoplanLoginComponent);
+</script>
+</body>
+</html>
